@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    /* Deep navy background */
+    --background: 0.18 0.05 240;
+    --foreground: 0.985 0 0;
+    --card: 0.22 0.05 240;
+    --card-foreground: 0.985 0 0;
+    --popover: 0.22 0.05 240;
+    --popover-foreground: 0.985 0 0;
+    /* CTA blue */
+    --primary: 0.58 0.17 260;
+    --primary-foreground: 0.985 0 0;
+    /* Navy mid */
+    --secondary: 0.26 0.065 240;
+    --secondary-foreground: 0.985 0 0;
+    --muted: 0.26 0.05 230;
+    --muted-foreground: 0.72 0.03 220;
+    /* Teal accent */
+    --accent: 0.79 0.13 195;
+    --accent-foreground: 0.12 0.04 240;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.32 0.05 230;
+    --input: 0.28 0.06 235;
+    --ring: 0.79 0.13 195;
+    --chart-1: 0.79 0.13 195;
+    --chart-2: 0.58 0.17 260;
+    --chart-3: 0.65 0.15 160;
+    --chart-4: 0.72 0.18 85;
+    --chart-5: 0.7 0.2 30;
+    --sidebar: 0.18 0.05 240;
+    --sidebar-foreground: 0.985 0 0;
+    --sidebar-primary: 0.58 0.17 260;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.79 0.13 195;
+    --sidebar-accent-foreground: 0.12 0.04 240;
+    --sidebar-border: 0.32 0.05 230;
+    --sidebar-ring: 0.79 0.13 195;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
+  }
+}
+
+@layer utilities {
+  .teal-glow {
+    box-shadow: 0 0 30px oklch(0.79 0.13 195 / 0.4), 0 0 60px
+      oklch(0.79 0.13 195 / 0.15);
+  }
+
+  .teal-text-glow {
+    text-shadow: 0 0 20px oklch(0.79 0.13 195 / 0.8);
+  }
+
+  .navy-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.15 0.055 242),
+      oklch(0.22 0.07 238)
+    );
+  }
+
+  .scan-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      oklch(0.79 0.13 195),
+      transparent
+    );
+    box-shadow: 0 0 10px oklch(0.79 0.13 195), 0 0 30px
+      oklch(0.79 0.13 195 / 0.5);
+    animation: scan 2s linear infinite;
+  }
+
+  @keyframes scan {
+    0% {
+      top: 0%;
+    }
+    100% {
+      top: 100%;
+    }
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.4;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes flicker {
+    0%,
+    95%,
+    100% {
+      opacity: 1;
+    }
+    97% {
+      opacity: 0.7;
+    }
+  }
+
+  .hud-flicker {
+    animation: flicker 4s infinite;
+  }
+
+  .progress-bar-fill {
+    animation: fill-progress 2.5s ease-in-out forwards;
+  }
+
+  @keyframes fill-progress {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+}
